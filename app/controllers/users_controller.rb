@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
+  before_action :set_params, only: [:show, :edit, :update,]
   before_action :correct_user, only: [:edit, :update]
-  
+
   def show 
-   @user = User.find(params[:id])
-   render 'show'
   end
   
   def new
@@ -22,12 +21,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    render 'edit'
   end
   
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Update Profile"
       redirect_to user_path(@user)
@@ -41,6 +37,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :profile, :area,
                                  :password_confirmation)
+  end
+  
+  def set_params
+    @user = User.find(params[:id])
   end
   
   def correct_user
