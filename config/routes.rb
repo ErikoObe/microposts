@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   patch  'setting'  , to: 'users#update'
 
   resources :users
+  resources :microposts
 end

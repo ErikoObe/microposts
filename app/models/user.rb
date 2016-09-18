@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :profile,  length: { maximum: 1000 }
   validates :area,  length: { maximum: 50 }
   
+  has_many :microposts
 end
