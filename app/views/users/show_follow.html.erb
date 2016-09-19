@@ -10,9 +10,13 @@
   
   <div class="col-md-8">
     <h1><%= @title %></h1>
-    <% @users.each do |user| %>
-      <ol><%= render user %></ol>
-    <% end %>
+    <ol class="followers">
+      <% @users.each do |user| %>
+        <li>
+          <%= link_to  gravatar_for(user, size: 20), user_path(user)  %>
+            <span class="user"><%= link_to user.name, user_path(user) %></span>
+        </li>
+      <% end %>
+    </ol>
   </div>
-  
 </div>
